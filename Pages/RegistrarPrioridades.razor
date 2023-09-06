@@ -1,4 +1,9 @@
-﻿@page "/regristrarprioridades"
+﻿@namespace TicketApp
+
+
+@page "/regristrarprioridades"
+@using TicketApp.Shared;
+
 
 <PageTitle>Registrar Prioridades</PageTitle>
 
@@ -8,12 +13,38 @@
 
 <h5>Prioridad ID</h5>
 
+
+<EditForm Model = "Prioridad" OnSubmit="Enviar">
 <div class="input-group">
-	<input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+	<input type="search" class="form rounded" placeholder=" Buscar Prioridad" aria-label="Search" aria-describedby="search-addon" bind-Value="Prioridad.TicketId" />
 	<button type="button" class="btn btn-outline-primary">Buscar</button>
 </div>
 
-@code {
+<br>
 
+<div class="input-group">
+		<input type="search" class="custom-form form rounded" placeholder="Ingresar Descripción" aria-label="Search" aria-describedby="search-addon " bind-Value="Prioridad.Descripcion" />
+</div>
+<br />
+<div class="input-group">
+		<input type="search" class="custom-form form rounded" placeholder=" Ingresar Dias de Compromiso" aria-label="Search" aria-describedby="search-addon" bind-Value="Prioridad.Fecha" />
+	
+</div>
+<br />
+<button class=" btn btn-primary">Nuevo</button>
+<button class=" btn btn-success">Guardar</button>
+<button class=" btn btn-danger">Eliminar</button>
+
+</EditForm>
+
+@code {
+	private Tickets Prioridad { get; set; } = new Tickets();
+
+	private void Enviar()
+	{
+		int IdPrioridad = Prioridad.TicketId;
+		string Descripcion = Prioridad.Descripcion;
+		var DiasCompromiso = Prioridad.Fecha;
+	}
 }
 
